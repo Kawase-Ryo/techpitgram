@@ -6,3 +6,9 @@
 @import "common";
 @import "users/devise";
 //scssファイルのコードが読み込む
+
+@import "users/show";
+//users/show.scssファイルのコードを読み込む
+
+@import "users/edit";
+//users/show.scssファイルのコードを読み込む

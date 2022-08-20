@@ -13,25 +13,22 @@
 
   <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">
-        <%= link_to "", root_path, class: "navbar__brand navbar__mainLogo" %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-md-auto align-items-center">
-            <li>
-              <%= link_to "投稿", "#", class: "btn btn-primary" %>
-            </li>
-            <li>
-              <%= link_to "", "#", class: "nav-link commonNavIcon profile-icon" %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    
+  <%= render 'partial/navbar' if current_user %>
+  <%#_partial/navbar部分テンプレート呼び出し、「if current_user」という条件式を追加することでログインしているかを確認してログインしていなかった場合にNavbarを非表示にするということが可能%>
+
+  <div id="wrapper">
+    <%= render 'partial/navbar' if current_user %>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-info"><%= flash[:notice] %></div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger"><%= flash[:alert] %></div>
+    <% end %>
     <%= yield %>
+  <%#メールアドレスが正しくない状態でログインしようとしたときに、ログインに失敗した旨をメッセージとして表示%>
+
+  <%= yield %>
+  
   </body>
 </html>

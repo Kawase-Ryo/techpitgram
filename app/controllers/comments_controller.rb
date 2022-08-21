@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
         else
           flash[:alert] = "コメントの削除に失敗しました"
         end
-      en
+      end
     
     private
       def comment_params
